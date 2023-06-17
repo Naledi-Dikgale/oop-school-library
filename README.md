@@ -1,4 +1,4 @@
-# Enumerable
+# Oop-School-library
 
 <a name="readme-top"></a>
 
@@ -27,7 +27,7 @@
 
 # 📖 [Oop-school-library] <a name="about-project"></a>
 
-**[Oop-school-library]** description
+**[Oop-school-library]**  Is an app a Librarian at a school university uses to create new user (students/teachers), add new books, and save records of who borrowed a given book and when.
 
 ## 🛠 Built With <a name="built-with"></a>
 
