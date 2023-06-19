@@ -44,7 +44,7 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Morse code conversion to words]**
+- **[Oop-school-library]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -72,7 +72,7 @@ Clone this repository to your desired folder:
 
 Install this project with:
 
-- cd morse_code
+- cd Oop-school-library
 - bundle install
 
 ### Usage
