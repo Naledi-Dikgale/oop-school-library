@@ -53,19 +53,19 @@ class App
   end
 
   # Method to create a book
-  def create_book(books)
+  def create_book
     puts 'Enter book title:'
     title = gets.chomp
     puts 'Enter book author:'
     author = gets.chomp
 
     book = Book.new(title, author)
-    books << book
+    @books << book
     puts 'Book created successfully.'
   end
 
   # Method to create a rental
-  def create_rental(rentals, books, people)
+  def create_rental
     puts 'Enter person ID:'
     person_id = gets.chomp.to_i
     person = people.find { |p| p.id == person_id }
