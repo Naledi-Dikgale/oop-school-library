@@ -43,7 +43,7 @@ class App
     if is_student
       puts 'Enter student classroom:'
       classroom = gets.chomp
-      person = Student.new(age, classroom, 'Unknown', parent_permission: true)
+      person = Student.new(age, name, classroom, parent_permission: true)
     else
       person = Person.new(age, name)
     end
