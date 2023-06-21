@@ -25,7 +25,7 @@ def select_option(selected, app)
   when '5'
     app.create_rental
   when '6'
-    app.list_all_rentals
+    app.list_rentals_for_person
   else
     puts 'Invalid input'
   end
