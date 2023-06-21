@@ -45,7 +45,9 @@ class App
       classroom = gets.chomp
       person = Student.new(age, name, classroom, parent_permission: true)
     else
-      person = Person.new(age, name)
+      puts 'Enter teacher specialization:'
+      gets.chomp
+      person = Person.new(age, name: name, parent_permission: true)
     end
 
     people << person
@@ -93,7 +95,9 @@ class App
   end
 
   # Method to list rentals for a given person ID
-  def list_rentals_for_person(rentals, person_id)
+  def list_rentals_for_person()
+    puts 'Enter person ID:'
+    person_id = gets.chomp.to_i
     person_rentals = rentals.select { |rental| rental.person.id == person_id }
 
     if person_rentals.empty?
