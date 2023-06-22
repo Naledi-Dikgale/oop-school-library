@@ -6,13 +6,13 @@ require_relative 'book'
 require_relative 'rental'
 
 class App
-  attr_reader :books, :people, :rentals, :classroom
+  attr_reader :books, :person, :rentals, :classroom
 
   def initialize
     @books = []
-    @people = []
+    @person = []
     @rentals = []
-    @classroom = Classroom.new('college')
+    # @classroom = Classroom.new('college')
   end
 
   # Method to list all books
@@ -26,31 +26,41 @@ class App
   # Method to list all people
   def list_all_people()
     puts 'All People:'
-    @people.each do |person|
-      puts "ID: #{person.id}, Name: #{person.name}"
+    @person.each do |person|
+      puts " #{person.class}, Name: #{person.name}, age: #{person.age}"
+
+      if person.instance_of?(Teacher)
+        puts "Specialization: [#{person.specialization}]"
+      else
+        puts "Permission: #{person.parent_permission}"
+      end
     end
   end
 
   # Method to create a person
   def create_person()
+    puts 'press 1 for student 2 for teacher'
+    is_student = gets.chomp.to_i
     puts 'Enter person name:'
     name = gets.chomp
     puts 'Enter person age:'
     age = gets.chomp.to_i
-    puts 'Is it a student? (y/n):'
-    is_student = gets.chomp.downcase == 'y'
 
-    if is_student
-      puts 'Enter student classroom:'
-      classroom = gets.chomp
-      person = Student.new(age, name, classroom, parent_permission: true)
-    else
-      puts 'Enter teacher specialization:'
-      gets.chomp
-      person = Person.new(age, name: name, parent_permission: true)
+
+    case is_student
+    when 1
+      print 'Does student have parent permission [Y/N]: '
+      permission = gets.chomp.downcase == 'y'
+      student = Student.new(1, age, permission, name)
+      @person << student
+
+    when 2
+      print 'What is the teachers specialization: '
+      specialization = gets.chomp
+      teacher = Teacher.new(age, specialization, name)
+      @person << teacher
     end
 
-    people << person
     puts 'Person created successfully.'
   end
 
@@ -68,44 +78,44 @@ class App
 
   # Method to create a rental
   def create_rental
-    puts 'Enter person ID:'
-    person_id = gets.chomp.to_i
-    person = people.find { |p| p.id == person_id }
-
-    unless person
-      puts 'Person not found.'
-      return
+    puts 'select book by number'
+    @books.each_with_index do |book, index|
+      puts "#{index} - Title: #{book.title}, Author: #{book.author}"
     end
 
-    puts 'Enter book title:'
-    book_title = gets.chomp
-    book = books.find { |b| b.title == book_title }
 
-    unless book
-      puts 'Book not found.'
-      return
+    book_index = gets.chomp.to_i
+
+    puts 'select person by number'
+    @person.each_with_index do |person, index|
+      puts "#{index} - #{person.class}, Name: #{person.name}"
     end
 
-    puts 'Enter rental date:'
+    person_index = gets.chomp.to_i
+    puts 'Enter date:'
     date = gets.chomp
 
-    rental = Rental.new(date, book, person)
-    rentals << rental
+    rental = Rental.new(date, @books[book_index], @person[person_index])
+    @rentals << rental
     puts 'Rental created successfully.'
   end
 
   # Method to list rentals for a given person ID
-  def list_rentals_for_person()
-    puts 'Enter person ID:'
-    person_id = gets.chomp.to_i
-    person_rentals = rentals.select { |rental| rental.person.id == person_id }
+  def list_rentals_for_person
+    puts 'all id'
+    @rentals.each do |rental|
+      puts " #{rental.person.id}, Name: #{rental.person.name}"
+    end
+    puts 'select id'
+    id = gets.chomp.to_i
 
-    if person_rentals.empty?
-      puts 'No rentals found for the given person ID.'
-    else
-      puts "Rentals for Person ID #{person_id}:"
-      person_rentals.each do |rental|
-        puts "Book: #{rental.book.title}, Date: #{rental.date}"
+    puts 'All Rentals for this id:'
+    @rentals.each do |rental|
+      if rental.person.id == id
+        puts "Title: #{rental.book.title}, Author: #{rental.book.author}, Date: #{rental.date}"
+
+      else
+        puts 'rental not found'
       end
     end
   end
