@@ -46,7 +46,6 @@ class App
     puts 'Enter person age:'
     age = gets.chomp.to_i
 
-
     case is_student
     when 1
       print 'Does student have parent permission [Y/N]: '
@@ -82,7 +81,6 @@ class App
     @books.each_with_index do |book, index|
       puts "#{index} - Title: #{book.title}, Author: #{book.author}"
     end
-
 
     book_index = gets.chomp.to_i
 
