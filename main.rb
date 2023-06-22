@@ -14,17 +14,17 @@ end
 
 def select_option(selected, app)
   case selected
-  when '1'
+  when 1
     app.list_all_books
-  when '2'
+  when 2
     app.list_all_people
-  when '3'
+  when 3
     app.create_person
-  when '4'
+  when 4
     app.create_book
-  when '5'
+  when 5
     app.create_rental
-  when '6'
+  when 6
     app.list_rentals_for_person
   else
     puts 'Invalid input'
@@ -36,8 +36,8 @@ def main
   puts 'Welcome to School Library App!'
   loop do
     show_menu
-    selected = gets.chomp
-    break if selected == '7'
+    selected = gets.chomp.to_i
+    break if selected == 7
 
     select_option(selected, app)
   end
