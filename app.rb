@@ -100,7 +100,7 @@ class App
     puts 'Rental created successfully.'
   end
 
-  # Method to list rentals for a given person ID
+  # Method to list rentals
   def list_rentals_for_person
     puts 'all id'
     @rentals.each do |rental|
