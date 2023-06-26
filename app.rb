@@ -4,6 +4,7 @@ require_relative 'teacher'
 require_relative 'classroom'
 require_relative 'book'
 require_relative 'rental'
+require_relative 'input'
 
 class App
   attr_reader :books, :person, :rentals, :classroom
@@ -40,22 +41,22 @@ class App
   # Method to create a person
   def create_person()
     puts 'press 1 for student 2 for teacher'
-    is_student = gets.chomp.to_i
+    is_student = InputHolder.new.user_input_to_i
     puts 'Enter person name:'
-    name = gets.chomp
+    name = InputHolder.new.user_input
     puts 'Enter person age:'
-    age = gets.chomp.to_i
+    age = InputHolder.new.user_input_to_i
 
     case is_student
     when 1
       print 'Does student have parent permission [Y/N]: '
-      permission = gets.chomp.downcase == 'y'
+      permission = InputHolder.new.user_permission
       student = Student.new(1, age, permission, name)
       @person << student
 
     when 2
       print 'What is the teachers specialization: '
-      specialization = gets.chomp
+      specialization = InputHolder.new.user_input
       teacher = Teacher.new(age, specialization, name)
       @person << teacher
     end
@@ -66,9 +67,9 @@ class App
   # Method to create a book
   def create_book
     puts 'Enter book title:'
-    title = gets.chomp
+    title = InputHolder.new.user_input
     puts 'Enter book author:'
-    author = gets.chomp
+    author = InputHolder.new.user_input
 
     book = Book.new(title, author)
     @books << book
@@ -82,16 +83,16 @@ class App
       puts "#{index} - Title: #{book.title}, Author: #{book.author}"
     end
 
-    book_index = gets.chomp.to_i
+    book_index = InputHolder.new.user_input_to_i
 
     puts 'select person by number'
     @person.each_with_index do |person, index|
       puts "#{index} - #{person.class}, Name: #{person.name}"
     end
 
-    person_index = gets.chomp.to_i
+    person_index = InputHolder.new.user_input_to_i
     puts 'Enter date:'
-    date = gets.chomp
+    date = InputHolder.new.user_input
 
     rental = Rental.new(date, @books[book_index], @person[person_index])
     @rentals << rental
@@ -105,7 +106,7 @@ class App
       puts " #{rental.person.id}, Name: #{rental.person.name}"
     end
     puts 'select id'
-    id = gets.chomp.to_i
+    id = InputHolder.new.user_input_to_i
 
     puts 'All Rentals for this id:'
     @rentals.each do |rental|
