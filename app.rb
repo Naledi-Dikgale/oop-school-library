@@ -4,21 +4,7 @@ require_relative 'teacher'
 require_relative 'classroom'
 require_relative 'book'
 require_relative 'rental'
-
-class InputHolder
-  def user_input
-    gets.chomp
-  end
-
-  def user_input_to_i
-    gets.chomp.to_i
-  end
-
-  def user_permission
-    gets.chomp.downcase == 'y'
-  end
-end
-
+require_relative 'input'
 
 class App
   attr_reader :books, :person, :rentals, :classroom
@@ -70,7 +56,7 @@ class App
 
     when 2
       print 'What is the teachers specialization: '
-      specialization = gets.chomp
+      specialization = InputHolder.new.user_input
       teacher = Teacher.new(age, specialization, name)
       @person << teacher
     end
@@ -81,9 +67,9 @@ class App
   # Method to create a book
   def create_book
     puts 'Enter book title:'
-    title = gets.chomp
+    title = InputHolder.new.user_input
     puts 'Enter book author:'
-    author = gets.chomp
+    author = InputHolder.new.user_input
 
     book = Book.new(title, author)
     @books << book
@@ -97,16 +83,16 @@ class App
       puts "#{index} - Title: #{book.title}, Author: #{book.author}"
     end
 
-    book_index = gets.chomp.to_i
+    book_index = InputHolder.new.user_input_to_i
 
     puts 'select person by number'
     @person.each_with_index do |person, index|
       puts "#{index} - #{person.class}, Name: #{person.name}"
     end
 
-    person_index = gets.chomp.to_i
+    person_index = InputHolder.new.user_input_to_i
     puts 'Enter date:'
-    date = gets.chomp
+    date = InputHolder.new.user_input
 
     rental = Rental.new(date, @books[book_index], @person[person_index])
     @rentals << rental
@@ -120,7 +106,7 @@ class App
       puts " #{rental.person.id}, Name: #{rental.person.name}"
     end
     puts 'select id'
-    id = gets.chomp.to_i
+    id = InputHolder.new.user_input_to_i
 
     puts 'All Rentals for this id:'
     @rentals.each do |rental|
