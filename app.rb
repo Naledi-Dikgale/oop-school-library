@@ -13,7 +13,6 @@ class App
     @books = []
     @person = []
     @rentals = []
-    # @classroom = Classroom.new('college')
   end
 
   # Method to list all books
