@@ -5,6 +5,21 @@ require_relative 'classroom'
 require_relative 'book'
 require_relative 'rental'
 
+class InputHolder
+  def user_input
+    gets.chomp
+  end
+
+  def user_input_to_i
+    gets.chomp.to_i
+  end
+
+  def user_permission
+    gets.chomp.downcase == 'y'
+  end
+end
+
+
 class App
   attr_reader :books, :person, :rentals, :classroom
 
@@ -40,16 +55,16 @@ class App
   # Method to create a person
   def create_person()
     puts 'press 1 for student 2 for teacher'
-    is_student = gets.chomp.to_i
+    is_student = InputHolder.new.user_input_to_i
     puts 'Enter person name:'
-    name = gets.chomp
+    name = InputHolder.new.user_input
     puts 'Enter person age:'
-    age = gets.chomp.to_i
+    age = InputHolder.new.user_input_to_i
 
     case is_student
     when 1
       print 'Does student have parent permission [Y/N]: '
-      permission = gets.chomp.downcase == 'y'
+      permission = InputHolder.new.user_permission
       student = Student.new(1, age, permission, name)
       @person << student
 
