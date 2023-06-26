@@ -1,5 +1,4 @@
 module Presentations
-  # def presentations
   def welcome_message
     puts 'Welcome to School Library App!'
   end
@@ -8,5 +7,4 @@ module Presentations
     puts 'Thank you for using this app!'
     exit
   end
-  # end
 end
