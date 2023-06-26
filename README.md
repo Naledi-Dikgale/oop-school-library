@@ -108,7 +108,8 @@ You can deploy this project using:
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/naledi-dikgale-068423159/)
 - Website: https://naledi-dikgale.github.io/mobile-portfolio/
 
-👤 **Salma Ibrahim**
+👤 **Author2**
+ *[SALMA IBRAHIM]*
 
 - GitHub: [@Saluumaa](https://github.com/saluumaa)
 - Twitter: [@SalmaHIbrahim20](https://twitter.com/SalmaHIbrahim20)

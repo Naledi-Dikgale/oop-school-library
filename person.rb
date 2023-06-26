@@ -1,4 +1,4 @@
-require_relative '../decorator/nameable'
+require_relative 'nameable'
 
 class Person < Nameable
   # constructor
