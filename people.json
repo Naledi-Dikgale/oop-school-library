@@ -1,0 +1,14 @@
+[
+    {"Options": 1,
+"age": 1, "name": "Salma", "parent_permission": true },
+
+{"Options": 2,
+"age": 2, "name": "Naledi", "specialization": "math", "parent_permission": false },
+
+{"Options": 1,
+"age": 3, "name": "Kay", "parent_permission": false },
+
+{"Options": 2,
+"age": 4, "name": "Siyabonga", "specialization": "science", "parent_permission": true }
+
+]
