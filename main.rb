@@ -54,8 +54,8 @@ class Main
 
       select_option(selected, @app)
     end
-    @app.save_data
     self.class.farewell_message
+    @app.save_data
   end
 end
 

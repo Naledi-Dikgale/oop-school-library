@@ -126,8 +126,8 @@ require_relative 'classroom'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'input'
-require_relative 'store-files'
-require_relative 'Save-data'
+require_relative 'store_files'
+require_relative 'Save_data'
 
 class App
   attr_reader :books, :people, :rentals
@@ -152,12 +152,12 @@ class App
   def list_all_people
     puts 'All People:'
     @people.each do |person|
-      puts "#{person.class}, Name: #{person.name}, Age: #{person.age}"
+      puts "#{person.class}, Name: #{person.name}, Age: #{person.age}, ID: #{person.id}"
 
-      if person['class'] == 'Teacher'
-        puts "Specialization: [#{person['specialization']}]"
+      if person.instance_of?(Teacher)
+        puts "Specialization: [#{person.specialization}]"
       else
-        puts "Permission: #{person['parent_permission']}"
+        puts "Permission: #{person.parent_permission}"
       end
     end
   end
@@ -211,7 +211,7 @@ class App
 
     puts 'Select a person by number:'
     @people.each_with_index do |person, index|
-      puts "#{index} - #{person['class']}, Name: #{person['name']}"
+      puts "#{index} - #{person.class}, Name: #{person.name}"
     end
 
     person_index = InputHolder.new.user_input_to_i
