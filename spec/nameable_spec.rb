@@ -14,7 +14,7 @@ describe Nameable do
     end
 
     it 'returns the correct name when implemented in a subclass' do
-        sample_nameable = SampleNameable.new
+      sample_nameable = SampleNameable.new
       expect(sample_nameable.correct_name).to eq('Sample Correct Name')
     end
   end

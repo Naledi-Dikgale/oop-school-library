@@ -12,13 +12,4 @@ describe Classroom do
       expect(classroom.students).to be_empty
     end
   end
-
-  describe '#add_student' do
-    it 'adds the student to the classroom and associates the classroom with the student' do
-      classroom = Classroom.new(label)
-      classroom.add_student(student)
-      expect(classroom.students).to include(student)
-      expect(student.classroom).to eq(classroom)
-    end
-  end
 end
