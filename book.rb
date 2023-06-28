@@ -16,7 +16,6 @@ class Book
     {
       title: @title,
       author: @author
-      # rentals: @rentals.map(&:to_hash)
     }
   end
 end
