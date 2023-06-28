@@ -1,6 +1,5 @@
 require_relative '../book'
 
-
 describe Book do
   before :each do
     @book = Book.new 'Something', 'Someone'
