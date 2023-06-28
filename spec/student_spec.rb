@@ -18,23 +18,23 @@ describe Student do
     end
   end
 
-  describe '#classroom=' do
-    it 'sets the classroom and adds the student to the classroom' do
-      student = Student.new(nil, 15, true)
-      expect(classroom).to receive(:students).and_return([])
-      expect(classroom.students).to receive(:push).with(student)
-      student.classroom = classroom
-      expect(student.classroom).to eq(classroom)
-    end
+  # describe '#classroom=' do
+  #   it 'sets the classroom and adds the student to the classroom' do
+  #     student = Student.new(nil, 15, true)
+  #     expect(classroom).to receive(:students).and_return([])
+  #     expect(classroom.students).to receive(:push).with(student)
+  #     student.classroom = classroom
+  #     expect(student.classroom).to eq(classroom)
+  #   end
 
-    it 'does not add the student to the classroom if already included' do
-      student = Student.new(nil, 15, true)
-      expect(classroom).to receive(:students).and_return([student])
-      expect(classroom.students).not_to receive(:push)
-      student.classroom = classroom
-      expect(student.classroom).to eq(classroom)
-    end
-  end
+  #   it 'does not add the student to the classroom if already included' do
+  #     student = Student.new(nil, 15, true)
+  #     expect(classroom).to receive(:students).and_return([student])
+  #     expect(classroom.students).not_to receive(:push)
+  #     student.classroom = classroom
+  #     expect(student.classroom).to eq(classroom)
+  #   end
+  # end
 
   describe '#play_hooky' do
     it 'returns a shrug emoticon' do

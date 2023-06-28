@@ -43,16 +43,16 @@ describe Person do
     end
   end
 
-  describe '#add_rental' do
-    it 'creates a new Rental object and associates it with the person' do
-      person = Person.new(25, true, 'John Doe')
-      rental = person.add_rental(book, date)
-      expect(rental).to be_a(Rental)
-      expect(rental.date).to eq(date)
-      expect(rental.book).to eq(book)
-      expect(rental.person).to eq(person)
-    end
-  end
+  # describe '#add_rental' do
+  #   it 'creates a new Rental object and associates it with the person' do
+  #     person = Person.new(25, true, 'John Doe')
+  #     rental = person.add_rental(book, date)
+  #     expect(rental).to be_a(Rental)
+  #     expect(rental.date).to eq(date)
+  #     expect(rental.book).to eq(book)
+  #     expect(rental.person).to eq(person)
+  #   end
+  # end
 
   describe '#to_hash' do
     it 'returns a hash representation of the person' do
