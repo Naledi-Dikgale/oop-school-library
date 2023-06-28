@@ -1,18 +1,15 @@
 require_relative '../capitalize_decorator'
 
-class SampleNameable < Nameable
-  def correct_name
-    'sample name'
-  end
-end
-
 describe CapitalizeDecorator do
-  let(:nameable) { SampleNameable.new }
-
   describe '#correct_name' do
-    it 'capitalizes the correct_name returned by the decorated object' do
-      decorator = CapitalizeDecorator.new(nameable)
-      expect(decorator.correct_name).to eq('Sample name')
+    it 'capitalizes the name using the base decorator' do
+      base_decorator = double('BaseDecorator')
+      allow(base_decorator).to receive(:correct_name).and_return('john doe')
+
+      decorator = CapitalizeDecorator.new(base_decorator)
+      result = decorator.correct_name
+
+      expect(result).to eq('John doe')
     end
   end
 end
